@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="ISO-8859-1">
+	<title>Insert title here</title>
+	<script type="text/javascript" src="js/jquery-1.11.3.js"></script>
+	<style type="text/css" rel="stylesheet">
+		#display{
+			width:250px;
+			height:250px;
+			border: 1px dashed gray;
+		}
+	</style>
+</head>
+<body>
+	<button id="special" class="bold small">Button 1</button>
+	<button class="bold small">Button 2</button>
+	<button class="bold">Button 3</button>
+	<br/><br/>
+	<!--  TextBox with Jquery -->
+	<input type="text" id="textbox">
+	<button id="submit">Submit</button>
+	<div id="display"></div>
+	
+	
+	
+	<script type="text/javascript">
+	//Jquery Selectors
+	//$(".big").show();
+	jQuery(".big").hide();
+	
+	//Jquery Functionality
+	$(function(){
+		$("#special").css("font-size","20px");
+		$("#special").css("color","red");
+	});
+	
+	//Jquery Event and Trigger
+	$("#special").click(function(){
+		$("button:not(#special)").hide();
+		$("#special").css("font-size","10px");
+		$("#special").css("color","yellow");
+	});
+	
+	//Jquery Text Boxes
+	$("#submit").click(function(){
+		var txt = $("#textbox").val();
+		$("#display").html(txt);
+		$("#textbox").val("");
+	});
+	</script>
+</body>
+</html>

@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="ISO-8859-1">
+	<title>JQuery Chatbot</title>
+	<script type="text/javascript" src="../js/jquery-1.11.3.js"></script>
+	<style type="text/css">
+		body{
+			font-family:arial,sans-serif;
+			margin: 0px;
+			background-color: #f2f2f2;
+		}
+		#header{
+			width:100%;
+			height:60px;
+			background-color: #333;
+			box-shadow:0px 4px 2px #333;
+		}
+		#header>h1{
+			width:1024px;
+			margin: 0px auto;
+			color:white;
+			//text-align: center;
+			padding:12px;
+		}
+		#container{
+			width:1024px;
+			margin: 0px auto;
+			height:500px;
+			margin-top:20px;
+			background-color: white;
+			border:1px solid #333;
+			overflow:scroll;
+		}
+		#controls{
+		width:1024px;
+		margin:0px auto;
+		}
+		textarea {
+		resize:none;
+		width:940px;
+		}
+		#send{
+		font-size:24px;
+		position: absolute;
+		}
+		.username{
+			color:blue;
+			font-weight:bold;
+		}
+		.bot{
+			color:green;
+			font-weight:bold;
+		}
+		
+	</style>
+</head>
+<body>
+	<div id="header">
+		<h1>Jquery chatbot v. 1.0</h1>
+	</div>
+	<div id="container">
+		
+	</div>
+	<div id="controls">
+		<textarea id="textbox" rows="2" cols="50" placeholder="Enter uoyr message here.........."></textarea>
+		<button id="send" type="submit">Send</button>
+		<br/>
+		<input type="checkbox" checked id="enter">
+		<label>Send on Enter</label>
+	</div>
+	<script type="text/javascript">
+		var username = "";
+		function send_message(message){
+			//store previous message
+			var prevState = $("#container").html();
+		
+			if(prevState.length > 5)
+			{
+				prevState = prevState + "<br/>";
+			}
+			//show new message and previous all message
+			$("#container").html(prevState +"<span class='current_message'>"+"<span class='bot'>Chatbot: </span>" + message+"</span>");
+			$(".current_message").hide();
+			$(".current_message").delay(500).fadeIn();
+			$(".current_message").removeClass("current_message");
+		}
+		function get_username(){
+			send_message("Hello, What is your name?");
+		}
+		function ai(message){
+			if(username.length < 5){
+				username = message;
+				send_message("Nice to meet you "+  username + ", How are you doing");
+			}
+			if(message.indexOf("how are you") >= 0){
+				send_message("Thanks, I am good!");
+			}
+			if(message.indexOf("time") >= 0){
+				var date = new Date();
+				var h = date.getHours();
+				var m = date.getMinutes();
+				send_message("Current time is :"+h+" : "+m);
+			}
+		}
+		$(function(){
+			//call a function username()
+			get_username();
+			$("#textbox").keypress(function(event){
+			if(event.which == 13)
+			{
+				if($("#enter").prop("checked")){
+					//console.log("Enter press, checkbox xhexked");
+					$("#send").click();
+					event.preventDefault();
+				}
+			}
+			});
+			$("#send").click(function(){
+				var newMessage = $("#textbox").val();
+				var username = "<span class='username'>You: </span>"
+				//Clear text box
+				$("#textbox").val("");
+				//store previous message
+				var prevState = $("#container").html();
+			
+				if(prevState.length > 5)
+				{
+					prevState = prevState + "<br/>";
+				}
+				//show new message and previous all message
+				$("#container").html(prevState + username + newMessage);
+				//scroll to top show new message bottom line
+				$("#container").scrollTop($("#container").prop("scrollHeight"));
+				ai(newMessage);
+			});
+		});
+	</script>
+</body>
+</html>
