@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Using Selectors and FIlters</title>
+	<script type="text/javascript" src="../js/jquery-1.11.3.js"></script>
+	<script type="text/javascript">
+		$("document").ready(function(){
+			//$("form :input").css("border", "3px solid red");
+			//$("form :text").css("border", "3px solid red");
+			//$("form :text:enable").css("border", "3px solid red");
+			//$("form :checked").css("border", "3px solid red");
+			$("form :checkbox:checked").css("border", "3px solid red");
+			
+		});
+	</script>
+	<style type="text/css">
+		.style1{width: 600px;}
+		.style2{width: 200px;}
+	</style>
+</head>
+<body>
+	<h1>Example Form Document</h1>
+	<form action="" method="post">
+		<table class="style1">
+			<tbody>
+				<tr>
+					<td class="style2">
+						First Name
+					</td>
+					<td>
+						<input type="text" name="FirstName" id="FirstName" />
+					</td>
+				</tr>
+				<tr>
+					<td class="style2">
+						Last Name
+					</td>
+					<td>
+						<input type="text" name="LastName" id="LastName" />
+					</td>
+				</tr>
+				<tr>
+					<td class="style2">
+						Disable Text Field
+					</td>
+					<td>
+						<input type="text" disabled="disabled" name="Text1" id="LastName" />
+					</td>
+				</tr>
+				<tr>
+					<td class="style2">
+						Gender
+					</td>
+					<td>
+						<input type="radio" name="Male" id="Male" checked="checked" />Male<input type="radio" name="Female" id="Female" />Female
+					</td>
+				</tr>
+				<tr>
+					<td class="style2">
+						What Products are you interested in?
+					</td>
+					<td>
+						<input type="checkbox" name="CheckBox1" id="CheckBox1" checked="checked"/><label for="CheckBox1">Widgets</label>
+						<input type="checkbox" name="CheckBox2" id="CheckBox1" /><label for="CheckBox2">Hibbity Jibbities</label>
+						<input type="checkbox" name="CheckBox3" id="CheckBox1" /><label for="CheckBox3">SplashBangers</label>
+						<input type="checkbox" name="CheckBox4" id="CheckBox1" /><label for="CheckBox4">Whatzits</label>
+					</td>
+				</tr>
+				<tr>
+					<td class="style2">
+						Comments:
+					</td>
+					<td>
+						<textarea rows="5" cols="40" id="comments" name="S1"></textarea>
+					</td>
+				</tr>
+				<tr>
+					<td class="style2">
+						Optional life story file
+					</td>
+					<td>
+						<input type="file" name="" id="" />
+					</td>
+				</tr>
+				<tr>
+					<td class="style2">
+
+					</td>
+					<td>
+						<input type="submit" name="save" id="btn_save" value="Save" />
+						<input type="reset" name="reset" id="btn_reset" value="Reset" />
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</form>
+</body>
+</html>

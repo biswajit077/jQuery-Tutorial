@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Using Child, Visibility, and Content FIlters</title>
+	<script type="text/javascript" src="../js/jquery-1.11.3.js"></script>
+	<script type="text/javascript">
+		$("document").ready(function(){
+			//alert($('#list1').html());
+			
+			//$('#list1').html("<li>This is a new list item</li>");
+			
+			//var newItem = $("<p>This is a new paragraph</p>");
+			//$('#para2').html(newItem.html());
+			
+			$('p:last').text("This is the last paragraph");
+		});
+	</script>
+	<style type="text/css">
+	.a{ color: navy;}
+	.b{ color: maroon;}
+	</style>
+</head>
+<body>
+	<ul id="list1">
+		<li class="a">item 1</li>
+		<li class="a">item 2</li>
+		<li class="b">item 3</li>
+		<li class="b">item 4</li>
+	</ul>
+	<p class="a"> This is paragraph 1</p>
+	<p id="para1"> This is paragraph 2</p>
+	<p class="b"> This is paragraph 3</p>
+	<p> This is paragraph 4</p>
+</body>
+</html>
