@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="ISO-8859-1">
+	<title>Insert title here</title>
+	<script type="text/javascript" src="../js/jquery-1.11.3.js"></script>
+	<script type="text/javascript">
+		$(function(){
+			$('#height').html($('#theDiv').height());
+			$('#width').html($('#theDiv').width());
+			$('#innerH').html($('#theDiv').innerHeight());
+			$('#innerW').html($('#theDiv').innerWidth());
+			$('#outterH').html($('#theDiv').outterHeight());
+			$('#outterW').html($('#theDiv').outterWidth());
+			$('#offset').html($('#theDiv').offset());
+			$('#position').html($('#theDiv').position());
+		});
+	</script>
+	<style type="text/css">
+		div#theDiv{
+			width: 250px;
+			height: 180px;
+			margin: 10px;
+			padding: 20px;
+			background: blue;
+			border: 2px solid black;
+			cursor: pointer;
+		}
+		p, span{font-size: 16pt;}
+	</style>
+</head>
+<body>
+	<p>Using jQuery to compute element size and position.</p>
+	<div id="theDiv"></div>
+	<div><span>Height: </span><span id="height"></span></div>
+	<div><span>Width: </span><span id="width"></span></div>
+	<div><span>innerHeight: </span><span id="innerH"></span></div>
+	<div><span>innerWidth: </span><span id="innerW"></span></div>
+	<div><span>outterHeight: </span><span id="outterH"></span></div>
+	<div><span>outterWidth: </span><span id="outerW"></span></div>
+	<div><span>Offset: </span><span id="offset"></span></div>
+	<div><span>Position: </span><span id="position"></span></div>
+</body>
+</html>
