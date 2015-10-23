@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="ISO-8859-1">
+	<title>Creating Automatic Bookmarks</title>
+	<script type="text/javascript" src="../js/jquery-1.11.3.js"></script>
+	<script type="text/javascript">
+		$('document').ready(function(){
+			buildBookmarks('h3', 'header');
+		});
+		
+		function buildBookmarks(startWhichTag, sBookMarkNode){
+			var cAnchorCount = 0;
+			var oList = $("<ul id='bookmarksList'>");
+			$("div:not([id=header])" + startWhichTag).each(function(){
+				$(this).html("<a name='bookmark"+ cAnchorCount + "'></a>" + $(this).html());
+				oList.append($("<li><a href='#bookmark"+ cAnchorCount++ +"'>" + $(this).text() + "</a></li>"));
+			});
+			$("#" +sBookMarkNode ).append(oList);
+		}
+	</script>
+</head>
+<body>
+	<div id="header">
+		<h1>Automatic Bookmark Headings Example</h1>
+		<h2>Using jQuery to Extract Existing Page Information</h2>
+		<p id="byline">by Biswajit Mandal</p>
+	</div>
+	<div id="intro">
+		<h3>Introduction</h3>
+		<p>
+			O.K. is a pair of initials with a multitude of uses -- not to mention a number of different explanations of how it came to be. An upcoming anniversary is the occasion for Mo Rocca to investigate:
+
+Word up! Next Sunday, March 23rd, is the 175th anniversary of the invention of a word that English professor Allan Metcalf believes is America's most successful export.
+
+"There's no other word that is widely recognized throughout the world," he told Rocca. "No other American word has succeeded like that."
+
+If you don't know what that word is, it's OK.
+
+Seriously: it's OK. The word "okay."
+
+For Metcalf, the world's foremost "OK expert," one reason for OK's appeal is its versatility.
+		</p>
+		<p>And finally, the most famous OK origin story was reinforced in the 2012 Academy Award-winning movie, "Silver Linings Playbook":</p>
+		
+		<a href="#header" title="return to the top of the page">Back to Top</a>
+	</div>
+	<div id="ingredients">
+		<h3>At vero eos</h3>
+		<p>
+			O.K. is a pair of initials with a multitude of uses -- not to mention a number of different explanations of how it came to be. An upcoming anniversary is the occasion for Mo Rocca to investigate:
+
+Word up! Next Sunday, March 23rd, is the 175th anniversary of the invention of a word that English professor Allan Metcalf believes is America's most successful export.
+
+"There's no other word that is widely recognized throughout the world," he told Rocca. "No other American word has succeeded like that."
+
+If you don't know what that word is, it's OK.
+
+Seriously: it's OK. The word "okay."
+
+For Metcalf, the world's foremost "OK expert," one reason for OK's appeal is its versatility.
+		</p>
+		<p>And finally, the most famous OK origin story was reinforced in the 2012 Academy Award-winning movie, "Silver Linings Playbook":</p>
+		
+	</div>
+
+</body>
+</html>

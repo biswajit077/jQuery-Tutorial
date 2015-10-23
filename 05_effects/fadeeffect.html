@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>jQuery Element Fading</title>
+	<script type="text/javascript" src="../js/jquery-1.11.3.js"></script>
+	<script type="text/javascript">
+		$(function(){
+			$("#fadein").click(function(){
+				//$("#theDiv").fadeIn("normal");
+				
+				$("#theDiv").fadeIn(4000, function(){
+					alert("Fading Done");
+				});
+			});
+			$("#fadeout").click(function(){
+				$("#theDiv").fadeOut("normal");
+			});
+			$("#fadeto3").click(function(){
+				$("#theDiv").fadeTo("normal", 0.3);
+			});
+			$("#fadeup").click(function(){
+				$("#theDiv").fadeTo("normal", 1.0);
+			});
+		});
+	</script>
+	<style type="text/css">
+		div#theDiv{
+			width: 250px;
+			height: 180px;
+			margin: 10px;
+			padding: 20px;
+			background: blue;
+			border: 2px solid black;
+			cursor: pointer;
+		}
+		p, span {
+			font-size: 16pt;
+		}
+		button {
+			margin: 5px;
+		}
+	</style>
+</head>
+<body>
+	<h1>jQuery Element Fading</h1>
+	<div id="theDiv"></div>
+	<button id="fadein">Fade In</button>
+	<button id="fadeout">Fade Out</button>
+	<button id="fadeto3">Fade To 3</button>
+	<button id="fadeup">Fade Up</button>
+</body>
+</html>

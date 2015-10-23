@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Binding and Unbinding Events with jQuery</title>
+	<script type="text/javascript" src="../js/jquery-1.11.3.js"></script>
+	<script type="text/javascript">
+		$("document").ready(function(){
+			$("#evtTarget").on('mouseover mouseleave', highlight);
+			
+			$("#evtTarget").on('click', function(evt){
+				$("#evtTarget").off('mouseover mouseleave', highlight);
+				$("#evtTarget").html("<p>You shut off the hover effect!</p>");
+			});
+		});
+		
+		function highlight(evt){
+			$("#evtTarget").toggleClass('highlighted');
+		}
+	</script>
+	<style type="text/css">
+		.normal{
+			width:300px;
+			height: 200px;
+			background-color: yellow;
+			font-size: 18pt;
+		}
+		.highlighted{
+			background-color: red;
+		}
+	</style>
+</head>
+<body>
+	<h1>Binding Event Example</h1>
+	<div id="evtTarget" class="normal">Mouse over this div to see the effect. Clickon it to unbind the mouse</div>
+</body>
+</html>

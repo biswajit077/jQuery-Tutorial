@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="ISO-8859-1">
+	<title>The Ajax Helper Functions</title>
+	<style type="text/css">
+		#content{
+			padding: 5pt;
+			border: 2px dashed lightgray;
+		}
+	</style>
+	<script type="text/javascript" src="../js/jquery-1.11.3.js"></script>
+	<script type="text/javascript">
+		$("document").ready(function(){
+			//getJSONData();
+			
+			getXMLData();
+		});
+		
+		function getJSONData(){
+			var flickrAPI = "http://api.flickr.com/services/feeds/photos_public.gne?jsoncalback=?";
+			$.getJSON(flickrAPI, {
+				tags: "space needle",
+				tagnode: "any",
+				format: "json"
+				},
+				successFn
+			);
+		}
+		function getXMLData(){
+			$.get("testxmldata.xml", function(result){
+				var title = result.getElementsByTagName("title")[0];
+				var name = result.getElementsByTagName("name")[0];
+				var val = title.firstChild.nodeValue + " by " + name.firstChild.nodeValue;
+				$("#content").append(val);
+			});
+		}
+		function successFn(result){
+			$.each(result.items, function(i, item){
+				$("<img>").attr("src", item.media.m).appendTo("#content");
+				if(i == 4){return false;}
+			});
+		}
+		function errorFn(xhr, status, strErr){
+			alert("There was an error!");
+		}
+	</script>
+</head>
+<body>
+	<h1>The Ajax Helper Functions</h1>
+	<p id="content"></p>
+</body>
+</html>

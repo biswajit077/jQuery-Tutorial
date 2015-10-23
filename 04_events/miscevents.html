@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Miscellaneous jQuery Events</title>
+	<script type="text/javascript" src="../js/jquery-1.11.3.js"></script>
+	<script type="text/javascript">
+		$(function(){
+			$("div").one("click", function(evt){
+				$(this).css({ background: 'red', cursor: 'auto' });
+			});
+		});
+	</script>
+	<style type="text/css">
+		div{
+			width: 60px;
+			height: 60px;
+			margin: 10px;
+			float: left;
+			background: blue;
+			border: 2px solid black;
+			cursor: pointer;
+		}
+		p{
+			font-size: 18pt;
+		}
+	</style>
+</head>
+<body>
+	<p>Click on each squqre to change color.</p>
+	<div></div><div></div><div></div><div></div>
+</body>
+</html>
