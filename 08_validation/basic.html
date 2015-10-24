@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<script type="text/javascript" src="../js/jquery-1.11.3.js"></script>
+	<script type="text/javascript" src="../js/jquery.validate.js"></script>
+	<script type="text/javascript" src="../js/localization/messages_bn_BD.js"></script>
+</head>
+<body>
+	<form class="cmxform" id="commentForm" method="get" action="basic.html">
+  <fieldset>
+    <legend>Please provide your name, email address (won't be published) and a comment</legend>
+    <p>
+      <label for="cname">Name (required, at least 2 characters)</label>
+      <input id="cname" name="name" minlength="2" type="text" required>
+    </p>
+    <p>
+      <label for="cemail">E-Mail (required)</label>
+      <input id="cemail" type="email" name="email" >
+    </p>
+    <p>
+      <label for="curl">URL (optional)</label>
+      <input id="curl" type="url" name="url" required>
+    </p>
+    <p>
+      <label for="ccomment">Your comment (required)</label>
+      <textarea id="ccomment" name="comment" required class="ignore"></textarea>
+    </p>
+    <p>
+      <input class="submit" type="submit" value="Submit">
+    </p>
+  </fieldset>
+</form>
+<div class="error"><span></span></div>
+<script>
+	$("#commentForm").validate({
+		debug:true, // Prevents the form from submitting and tries to help setting up the validation with warnings about missing methods and other debug messages.
+		submitHandler: function(form) {
+    			//$(form).ajaxSubmit();//Submits the form via Ajax when valid.
+    			form.submit(); //Use submitHandler to process something and then using the default submit. Note that "form" refers to a DOM element, this way the validation isn't triggered again.
+  			},
+  			/*
+  				Displays a message above the form, indicating how many fields are invalid when the user tries to submit an invalid form.
+  			*/
+	   invalidHandler: function(event, validator) {
+	    // 'this' refers to the form
+	    var errors = validator.numberOfInvalids();
+	    if (errors) {
+	      var message = errors == 1
+	        ? 'You missed 1 field. It has been highlighted'
+	        : 'You missed ' + errors + ' fields. They have been highlighted';
+	      $("div.error span").html(message);
+	      $("div.error").show();
+	    } else {
+	      $("div.error").hide();
+	    }
+  	},
+  	ignore: ".ignore", //Ignores all elements with the class "ignore" when validating.
+  	rules: {
+	    // simple rule, converted to {required:true}
+	    name: "required",
+	    // compound rule
+	    email: {
+	      required: true,
+	      email:true,
+	      min:{	      depends: function(element) {
+	          return $("#cname").is(":blank");
+	        }}
+	    }
+	  },
+	  messages: {
+	    name: "এই তথ্যটি আবশ্যক।",
+	    email: {
+	      required: "We need your email address to contact you",
+	      email: "Your email address must be in the format of name@domain.com"
+	    }
+	  },
+	  onsubmit: true, // default true
+	  onkeyup: true
+	});
+</script>
+</body>
+</html>
